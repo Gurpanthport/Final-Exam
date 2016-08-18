@@ -1,0 +1,28 @@
+﻿@using COMP2006_S2016_FinalExamV2.Models
+@model IEnumerable<Genre>
+
+@{
+    ViewBag.Title = "Store Page";
+}
+<div class="padded">
+    <div class="panel-body my-div">
+        <h2>Browse Genres Types:</h2>
+        <p>
+            Select from @Model.Count() different Types:
+        </p>
+        @**@
+
+        @foreach (Genre item in Model)
+        {
+            <div class="col-md-4 col-sm-6" onclick="location.href = '@Url.Action("Browse", new { Genre = item.Name})'">
+                <div class="menu-item">
+                    <h2>@Html.DisplayFor(model => item.Name)</h2>
+                    <p class="form-group">
+                        @item.Description
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
